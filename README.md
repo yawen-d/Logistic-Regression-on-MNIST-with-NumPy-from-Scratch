@@ -12,22 +12,17 @@ In my code, I first initialize a random set of parameters, and then I use stocha
 I also tested the model for 100 times with random initialization and plotted the histogram of accuracy scores to see the accuracy of my model.
 
 Note that the number of iterations is 100000, and I implemented a learning rate schedule as follows:
-<img src="http://latex.codecogs.com/gif.latex?\alpha_0(\text{base rate})=0.01\\
-\alpha^{(l)}=\begin{cases} 
-      \alpha_0 & x\leq \frac{100000}3 \\
-      \alpha_0\times10^{-1} & \frac{100000}3\lt x\leq \frac{200000}3 \\
-      \alpha_0\times10^{-2} & \frac{200000}3\lt x\leq 100000\end{cases}\ " />
 
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-$$
-\alpha_0(\text{base rate})=0.01\\
+$$\alpha_0(\text{base rate})=0.01\\
 \alpha^{(l)}=\begin{cases} 
       \alpha_0 & x\leq \frac{100000}3 \\
       \alpha_0\times10^{-1} & \frac{100000}3\lt x\leq \frac{200000}3 \\
       \alpha_0\times10^{-2} & \frac{200000}3\lt x\leq 100000
    \end{cases}
-\
-$$
+\$$
+
 I wrote 6 functions including `softmax(z)`, `gradient(w, x, y)`, `initialize(num_outputs,num_inputs)`, `model(X_train, Y_train, num_iterations, learning_rate)`, `predict(w, x)`, `testing(model, X_test, Y_test)` to handle initialization, model fitting and testing.
 
 ## Test Accuracy 
