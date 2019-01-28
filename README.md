@@ -13,7 +13,7 @@ I also tested the model for 100 times with random initialization and plotted the
 
 Note that the number of iterations is 100000, and I implemented a learning rate schedule as follows:
 
-![Alt text](asset/Figure_2.png/?raw=true "Learning Rate Schedule")
+![Alt text](asset/Figure_2(new).png/?raw=true "Learning Rate Schedule")
 
 I wrote 6 functions including `softmax(z)`, `gradient(w, x, y)`, `initialize(num_outputs,num_inputs)`, `model(X_train, Y_train, num_iterations, learning_rate)`, `predict(w, x)`, `testing(model, X_test, Y_test)` to handle initialization, model fitting and testing.
 
