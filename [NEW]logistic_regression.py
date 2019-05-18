@@ -78,17 +78,29 @@ def eval(param, x_data, y_data):
     return loss, accuracy
 
 def train(param, hyp ,x_train,y_train,x_test,y_test):
-
     num_epoches = hyp['num_epoches']
     batch_size = hyp['batch_size']
     learning_rate = hyp['learning_rate']
+    mu = hyp['mu']
     test_loss_list, test_accu_list = [],[]
+    if hyp['momentum'] == True:
+        w_velocity = np.zeros(param['w'].shape)
+        b_velocity = np.zeros(param['b'].shape) 
+
     for epoch in range(num_epoches):
         
         # select the random sequence of training set
         rand_indices = np.random.choice(x_train.shape[0],x_train.shape[0],replace=False)
         num_batch = int(x_train.shape[0]/batch_size)
         batch_loss100 = 0
+        
+        if hyp['learning_schedule'] == True:
+            try:
+                if test_accu_list[-1] - test_accu_list[-2] < 0.001:
+                    learning_rate *= 0.95
+            except:
+                pass
+            print('learning rate:', learning_rate)
         # for each batch of train data
         for batch in range(num_batch):
             index = rand_indices[batch_size*batch:batch_size*(batch+1)]
@@ -99,8 +111,14 @@ def train(param, hyp ,x_train,y_train,x_test,y_test):
             dw, db, batch_loss = mini_batch_gradient(param, x_batch, y_batch)
             batch_loss100 += batch_loss
             # update the parameters with the learning rate
-            param['w'] = param['w'] - learning_rate * dw
-            param['b'] = param['b'] - learning_rate * db
+            if hyp['momentum'] == True:
+                w_velocity = mu * w_velocity + learning_rate * dw
+                b_velocity = mu * b_velocity + learning_rate * db
+                param['w'] -= w_velocity
+                param['b'] -= b_velocity
+            else:
+                param['w'] -= learning_rate * dw
+                param['b'] -= learning_rate * db
             if batch % 100 == 0:
                 print('Epoch %d, Batch %d, Loss %.2f' % (epoch+1, batch, batch_loss))
                 batch_loss100 = 0
@@ -120,6 +138,7 @@ def plot(loss_list, accu_list):
     plt.xlabel('Epoch')
     plt.xticks(rotation=60)
     plt.title('Loss Function ~ Epoch')
+    plt.savefig('assets/loss_trend.png')
     plt.show()
 
     plt.plot(accu_list)
@@ -127,13 +146,17 @@ def plot(loss_list, accu_list):
     plt.xlabel('Epoch')
     plt.xticks(rotation=60)
     plt.title('Test Accuracy ~ Epoch')
+    plt.savefig('assets/accr_trend.png')
     plt.show()
 
 def main(): 
     hyperpara = {
-        'num_epoches' : 5,
-        'batch_size' : 128,
-        'learning_rate' : 0.005
+        'num_epoches' : 50,
+        'batch_size' : 64,
+        'learning_rate' : 0.02,
+        'learning_schedule' : True,
+        'momentum' : False,
+        'mu' : 0.9
     }
 
     # loading MNIST data
