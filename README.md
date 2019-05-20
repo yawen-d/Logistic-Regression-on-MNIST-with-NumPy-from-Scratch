@@ -162,6 +162,9 @@ For each epoch, we evaluate the loss and accuracy.
 ## Training Results
 
 The training results of 4 configurations are shown as follows. 
+
+
+
 |                       |             config_sample              |             config_1              | config_2                          | config_3                          |
 | :-------------------: | :------------------------------------: | :-------------------------------: | --------------------------------- | --------------------------------- |
 |       Optimizer       |                  SGD                   |                SGD                | SGD                               | SGD                               |
@@ -175,3 +178,9 @@ The training results of 4 configurations are shown as follows.
 |      Loss Trend       | ![loss_sample](assets/loss_sample.png) | ![loss_sample](assets/loss_1.png) | ![loss_sample](assets/loss_2.png) | ![loss_sample](assets/loss_3.png) |
 |    Accuracy Trend     | ![loss_sample](assets/accr_sample.png) | ![loss_sample](assets/accr_1.png) | ![loss_sample](assets/accr_2.png) | ![loss_sample](assets/accr_3.png) |
 
+Comments: 
+
+- **Config_sample:** The accuracy drops after epoch 6 . 
+- **Config_1:** By increasing the batch size and decreasing the learning rate, the convergence rate decreases because of fewer descent iterations.
+- **Config_2:** Adding momentum allows the model to converge faster.
+- **Config_3:** Allowing learning decay prevents the accuracy from droping dramatically.
