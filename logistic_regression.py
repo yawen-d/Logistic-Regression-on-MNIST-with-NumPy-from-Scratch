@@ -4,7 +4,7 @@ import h5py
 import time
 import copy
 import matplotlib.pyplot as plt
-from utils.cfg import loadConfig
+from cfg import loadConfig 
 
 
 def load_mnist(filename):
@@ -97,7 +97,7 @@ def eval(param, x_data, y_data):
     loss = sum(loss_list)
     return loss, accuracy
 
-def train(param, hyp ,x_train,y_train,x_test,y_test):
+def train(param, hyp , x_train, y_train, x_test, y_test,cfg_idx):
     """ implement the train function
     input: param -- parameters dictionary (w, b)
            hyp -- hyperparameters dictionary
@@ -112,7 +112,7 @@ def train(param, hyp ,x_train,y_train,x_test,y_test):
     learning_rate = hyp['learning_rate']
     mu = hyp['mu']
     test_loss_list, test_accu_list = [],[]
-    if hyp['momentum'] == True:
+    if bool(hyp['momentum']) == True:
         w_velocity = np.zeros(param['w'].shape)
         b_velocity = np.zeros(param['b'].shape) 
 
@@ -123,13 +123,17 @@ def train(param, hyp ,x_train,y_train,x_test,y_test):
         num_batch = int(x_train.shape[0]/batch_size)
         batch_loss100 = 0
         
-        if hyp['learning_schedule'] == True:
+        if bool(hyp['learning_decay']) == True:
             try:
                 if test_accu_list[-1] - test_accu_list[-2] < 0.001:
                     learning_rate *= hyp['decay_factor']
             except:
                 pass
-            print('learning rate:', learning_rate)
+            
+            message = 'learning rate: %d' % learning_rate
+            print(message)
+            logging.info(message)
+
         # for each batch of train data
         for batch in range(num_batch):
             index = rand_indices[batch_size*batch:batch_size*(batch+1)]
@@ -140,7 +144,7 @@ def train(param, hyp ,x_train,y_train,x_test,y_test):
             dw, db, batch_loss = mini_batch_gradient(param, x_batch, y_batch)
             batch_loss100 += batch_loss
             # update the parameters with the learning rate
-            if hyp['momentum'] == True:
+            if bool(hyp['momentum']) == True:
                 w_velocity = mu * w_velocity + learning_rate * dw
                 b_velocity = mu * b_velocity + learning_rate * db
                 param['w'] -= w_velocity
@@ -149,18 +153,24 @@ def train(param, hyp ,x_train,y_train,x_test,y_test):
                 param['w'] -= learning_rate * dw
                 param['b'] -= learning_rate * db
             if batch % 100 == 0:
-                print('Epoch %d, Batch %d, Loss %.2f' % (epoch+1, batch, batch_loss))
+                message = 'Epoch %d, Batch %d, Loss %.2f' % (epoch+1, batch, batch_loss)
+                print(message)
+                # logging.info(message)
+
                 batch_loss100 = 0
         train_loss, train_accu = eval(param,x_train,y_train)
         test_loss, test_accu = eval(param,x_test,y_test)
         test_loss_list.append(test_loss)
         test_accu_list.append(test_accu)
-        print('Epoch %d, Train Loss %.2f, Train Accu %.4f, Test Loss %.2f, Test Accu %.4f' % (epoch+1, train_loss, train_accu, test_loss, test_accu))
+
+        message = 'Epoch %d, Train Loss %.2f, Train Accu %.4f, Test Loss %.2f, Test Accu %.4f' % (epoch+1, train_loss, train_accu, test_loss, test_accu)
+        print(message)
+        logging.info(message)
     return test_loss_list, test_accu_list
 
 
 
-def plot(loss_list, accu_list, cfg_index):
+def plot(loss_list, accu_list, cfg_idx):
     """store the plots"""
     # epoch_list = list(range(len(loss_list)))
     plt.plot(loss_list)
@@ -168,7 +178,7 @@ def plot(loss_list, accu_list, cfg_index):
     plt.xlabel('Epoch')
     plt.xticks(rotation=60)
     plt.title('Loss Function ~ Epoch')
-    plt.savefig('assets/loss_{}.png'.format(cfg_index))
+    plt.savefig('assets/loss_{}.png'.format(cfg_idx))
     plt.show()
 
     plt.plot(accu_list)
@@ -176,12 +186,12 @@ def plot(loss_list, accu_list, cfg_index):
     plt.xlabel('Epoch')
     plt.xticks(rotation=60)
     plt.title('Test Accuracy ~ Epoch')
-    plt.savefig('assets/accr_{}.png'.format(cfg_index))
+    plt.savefig('assets/accr_{}.png'.format(cfg_idx))
     plt.show()
 
 def main(args): 
-    cfg_index = args.config
-    cfg_name = 'config_{}.json'.format(cfg_index)
+    cfg_idx = args.config
+    cfg_name = 'config_{}.json'.format(cfg_idx)
     hyperpara = loadConfig(cfg_name)
 
     # loading MNIST data
@@ -196,10 +206,10 @@ def main(args):
     param = initialize(num_inputs,num_classes)
 
     # train the model
-    loss_list, accu_list = train(param,hyperpara,x_train,y_train,x_test,y_test)
+    loss_list, accu_list = train(param,hyperpara,x_train,y_train,x_test,y_test, cfg_idx)
 
     # plot the loss and accuracy
-    plot(loss_list, accu_list, cfg_index)
+    plot(loss_list, accu_list, cfg_idx)
 
 if __name__ == "__main__":
     import argparse
@@ -207,4 +217,7 @@ if __name__ == "__main__":
     parser.add_argument("-c", "--config", type=str, 
                         default="sample", help="Config of hyperparameters")
     args = parser.parse_args()
+
+    import logging
+    logging.basicConfig(filename="./logs/{}.log".format(args.config), filemode="w", format="%(message)s", level=logging.DEBUG)
     main(args)

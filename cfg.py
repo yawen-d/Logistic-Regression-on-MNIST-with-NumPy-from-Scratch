@@ -3,10 +3,7 @@ import sys
 import json
 
 root = os.path.abspath('.')
-if root[-5:] == 'utils':
-    root = root[:-5]
 root += '/configs/'
-
 
 def loadConfig(name):
     """ Read a configuration file as a dictionary"""
