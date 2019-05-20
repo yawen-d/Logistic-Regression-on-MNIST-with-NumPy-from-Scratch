@@ -164,14 +164,5 @@ For each epoch, we evaluate the loss and accuracy.
 The training results of 4 configurations are shown as follows. 
 |                       |             config_sample              |             config_1              | config_2                          | config_3                          |
 | :-------------------: | :------------------------------------: | :-------------------------------: | --------------------------------- | --------------------------------- |
-|       Optimizer       |                  SGD                   |                SGD                | SGD                               | SGD                               |
-|   Number of Epoches   |                   15                   |                15                 | 15                                | 15                                |
-|      Batch Size       |                   10                   |              **100**              | **100**                           | 10                                |
-|     Learning Rate     |                 0.005                  |            **0.0025**             | **0.0025**                        | 0.005                             |
-|    Learning Decay     |                  ----                  |               ----                | ----                              | **0.75**                          |
-|   Momentum ($\mu$)    |                  ----                  |               ----                | **0.9**                           | ----                              |
-|   Optimal Test Loss   |           3310.17 @ Epoch 6            |        4618.44 @ Epoch 15         | 3296.48 @ Epoch 15                | 3310.17 @ Epoch 6                 |
-| Optimal Test Accuracy |            0.9093 @ Epoch 6            |         0.8861 @ Epoch 15         | 0.9091 @ Epoch 15                 | 0.9093 @ Epoch 6                  |
-|      Loss Trend       | ![loss_sample](assets/loss_sample.png) | ![loss_sample](assets/loss_1.png) | ![loss_sample](assets/loss_2.png) | ![loss_sample](assets/loss_3.png) |
-|    Accuracy Trend     | ![loss_sample](assets/accr_sample.png) | ![loss_sample](assets/accr_1.png) | ![loss_sample](assets/accr_2.png) | ![loss_sample](assets/accr_3.png) |
+|       Optimizer       |                  SGD                   |                SGD                | SGD                               
 
