@@ -4,9 +4,11 @@ import h5py
 import time
 import copy
 import matplotlib.pyplot as plt
+from utils.cfg import loadConfig
 
-# load MNIST data
+
 def load_mnist(filename):
+    """load MNIST data"""
     MNIST_data = h5py.File(filename, 'r')
     x_train = np.float32(MNIST_data['x_train'][:])
     y_train = np.int32(np.array(MNIST_data['y_train'][:,0]))
@@ -16,6 +18,7 @@ def load_mnist(filename):
     return x_train,y_train,x_test,y_test
 
 def initialize(num_inputs,num_classes):
+    """initialize the parameters"""
     # num_inputs = 28*28 = 784
     # num_classes = 10
     w = np.random.randn(num_classes, num_inputs) / np.sqrt(num_classes*num_inputs) # (10*784)
@@ -28,6 +31,10 @@ def initialize(num_inputs,num_classes):
     return param
 
 def softmax(z):
+    """implement the softmax functions
+    input: numpy ndarray
+    output: numpy ndarray
+    """
     exp_list = np.exp(z)
     result = 1/sum(exp_list) * exp_list
     result = result.reshape((len(z),1))
@@ -35,10 +42,17 @@ def softmax(z):
     return result
 
 def neg_log_loss(pred, label):
+    """implement the negative log loss"""
     loss = -np.log(pred[int(label)])
     return loss
 
 def mini_batch_gradient(param, x_batch, y_batch):
+    """implement the function to compute the mini batch gradient
+    input: param -- parameters dictionary (w, b)
+           x_batch -- a batch of x (size, 784)
+           y_batch -- a batch of y (size,)
+    output: dw, db, batch_loss
+    """
     batch_size = x_batch.shape[0]
     w_grad_list = []
     b_grad_list = []
@@ -65,6 +79,12 @@ def mini_batch_gradient(param, x_batch, y_batch):
     return dw, db, batch_loss
 
 def eval(param, x_data, y_data):
+    """ implement the evaluation function
+    input: param -- parameters dictionary (w, b)
+           x_data -- x_train or x_test (size, 784)
+           y_data -- y_train or y_test (size,)
+    output: loss and accuracy
+    """
     # w: (10*784), x: (10000*784), y:(10000,)
     loss_list = []
     w = param['w'].transpose()
@@ -78,6 +98,15 @@ def eval(param, x_data, y_data):
     return loss, accuracy
 
 def train(param, hyp ,x_train,y_train,x_test,y_test):
+    """ implement the train function
+    input: param -- parameters dictionary (w, b)
+           hyp -- hyperparameters dictionary
+           x_train -- (60000, 784)
+           y_train -- (60000,)
+           x_test -- x_test (10000, 784)
+           y_test -- y_test (10000,)
+    output: test_loss_list, test_accu_list
+    """
     num_epoches = hyp['num_epoches']
     batch_size = hyp['batch_size']
     learning_rate = hyp['learning_rate']
@@ -97,7 +126,7 @@ def train(param, hyp ,x_train,y_train,x_test,y_test):
         if hyp['learning_schedule'] == True:
             try:
                 if test_accu_list[-1] - test_accu_list[-2] < 0.001:
-                    learning_rate *= 0.95
+                    learning_rate *= hyp['decay_factor']
             except:
                 pass
             print('learning rate:', learning_rate)
@@ -131,14 +160,15 @@ def train(param, hyp ,x_train,y_train,x_test,y_test):
 
 
 
-def plot(loss_list, accu_list):
+def plot(loss_list, accu_list, cfg_index):
+    """store the plots"""
     # epoch_list = list(range(len(loss_list)))
     plt.plot(loss_list)
     plt.ylabel('Loss Function')
     plt.xlabel('Epoch')
     plt.xticks(rotation=60)
     plt.title('Loss Function ~ Epoch')
-    plt.savefig('assets/loss_trend.png')
+    plt.savefig('assets/loss_{}.png'.format(cfg_index))
     plt.show()
 
     plt.plot(accu_list)
@@ -146,18 +176,13 @@ def plot(loss_list, accu_list):
     plt.xlabel('Epoch')
     plt.xticks(rotation=60)
     plt.title('Test Accuracy ~ Epoch')
-    plt.savefig('assets/accr_trend.png')
+    plt.savefig('assets/accr_{}.png'.format(cfg_index))
     plt.show()
 
-def main(): 
-    hyperpara = {
-        'num_epoches' : 50,
-        'batch_size' : 64,
-        'learning_rate' : 0.02,
-        'learning_schedule' : True,
-        'momentum' : False,
-        'mu' : 0.9
-    }
+def main(args): 
+    cfg_index = args.config
+    cfg_name = 'config_{}.json'.format(cfg_index)
+    hyperpara = loadConfig(cfg_name)
 
     # loading MNIST data
     x_train,y_train,x_test,y_test = load_mnist('MNISTdata.hdf5')
@@ -174,7 +199,12 @@ def main():
     loss_list, accu_list = train(param,hyperpara,x_train,y_train,x_test,y_test)
 
     # plot the loss and accuracy
-    plot(loss_list, accu_list)
+    plot(loss_list, accu_list, cfg_index)
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-c", "--config", type=str, 
+                        default="sample", help="Config of hyperparameters")
+    args = parser.parse_args()
+    main(args)
