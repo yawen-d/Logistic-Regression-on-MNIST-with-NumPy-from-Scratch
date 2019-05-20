@@ -1,0 +1,17 @@
+Epoch 1, Train Loss 32381.79, Train Accu 0.8693, Test Loss 5169.77, Test Accu 0.8767
+Epoch 2, Train Loss 26966.44, Train Accu 0.8830, Test Loss 4287.18, Test Accu 0.8906
+Epoch 3, Train Loss 24720.27, Train Accu 0.8902, Test Loss 3926.50, Test Accu 0.8955
+Epoch 4, Train Loss 23471.23, Train Accu 0.8940, Test Loss 3728.44, Test Accu 0.8996
+Epoch 5, Train Loss 22549.20, Train Accu 0.8976, Test Loss 3589.80, Test Accu 0.9031
+Epoch 6, Train Loss 21927.45, Train Accu 0.8985, Test Loss 3499.20, Test Accu 0.9052
+Epoch 7, Train Loss 21630.95, Train Accu 0.8994, Test Loss 3459.29, Test Accu 0.9058
+Epoch 8, Train Loss 21295.60, Train Accu 0.9007, Test Loss 3403.21, Test Accu 0.9069
+Epoch 9, Train Loss 21134.72, Train Accu 0.9006, Test Loss 3391.34, Test Accu 0.9067
+Epoch 10, Train Loss 20966.09, Train Accu 0.9013, Test Loss 3371.80, Test Accu 0.9071
+Epoch 11, Train Loss 20643.83, Train Accu 0.9035, Test Loss 3319.85, Test Accu 0.9083
+Epoch 12, Train Loss 20800.04, Train Accu 0.9008, Test Loss 3355.60, Test Accu 0.9078
+Epoch 13, Train Loss 20740.96, Train Accu 0.9008, Test Loss 3346.76, Test Accu 0.9074
+Epoch 14, Train Loss 20589.84, Train Accu 0.9015, Test Loss 3329.72, Test Accu 0.9085
+Epoch 15, Train Loss 20351.31, Train Accu 0.9029, Test Loss 3296.48, Test Accu 0.9091
+findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans (u'/usr/local/lib/python2.7/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
+findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0 to DejaVu Sans (u'/usr/local/lib/python2.7/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000

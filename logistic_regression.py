@@ -130,7 +130,7 @@ def train(param, hyp , x_train, y_train, x_test, y_test,cfg_idx):
             except:
                 pass
             
-            message = 'learning rate: %d' % learning_rate
+            message = 'learning rate: %.8f' % learning_rate
             print(message)
             logging.info(message)
 
