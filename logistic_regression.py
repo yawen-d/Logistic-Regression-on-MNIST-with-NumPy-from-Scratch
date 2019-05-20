@@ -220,4 +220,5 @@ if __name__ == "__main__":
 
     import logging
     logging.basicConfig(filename="./logs/{}.log".format(args.config), filemode="w", format="%(message)s", level=logging.DEBUG)
+    
     main(args)

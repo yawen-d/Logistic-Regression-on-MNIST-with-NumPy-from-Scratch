@@ -1,9 +1,9 @@
 {
     "num_epoches" : 15,
-    "batch_size" : 100,
-    "learning_rate" : 0.0025,
+    "batch_size" : 10,
+    "learning_rate" : 0.005,
     "learning_decay" : 1,
     "decay_factor" : 0.75,
-    "momentum" : 1,
+    "momentum" : 0,
     "mu" : 0.9
 }

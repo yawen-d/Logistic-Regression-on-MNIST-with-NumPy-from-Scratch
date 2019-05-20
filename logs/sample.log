@@ -1,17 +1,17 @@
-Epoch 1, Train Loss 32507.77, Train Accu 0.8701, Test Loss 5187.57, Test Accu 0.8773
-Epoch 2, Train Loss 27019.41, Train Accu 0.8835, Test Loss 4294.72, Test Accu 0.8906
-Epoch 3, Train Loss 24742.65, Train Accu 0.8907, Test Loss 3930.15, Test Accu 0.8958
-Epoch 4, Train Loss 23495.10, Train Accu 0.8940, Test Loss 3731.25, Test Accu 0.8994
-Epoch 5, Train Loss 22567.46, Train Accu 0.8974, Test Loss 3593.55, Test Accu 0.9028
-Epoch 6, Train Loss 21937.69, Train Accu 0.8989, Test Loss 3498.67, Test Accu 0.9053
-Epoch 7, Train Loss 21698.83, Train Accu 0.8992, Test Loss 3470.15, Test Accu 0.9052
-Epoch 8, Train Loss 21390.09, Train Accu 0.9001, Test Loss 3419.03, Test Accu 0.9063
-Epoch 9, Train Loss 21116.79, Train Accu 0.9009, Test Loss 3387.91, Test Accu 0.9073
-Epoch 10, Train Loss 20907.20, Train Accu 0.9016, Test Loss 3361.27, Test Accu 0.9072
-Epoch 11, Train Loss 20700.01, Train Accu 0.9031, Test Loss 3331.61, Test Accu 0.9080
-Epoch 12, Train Loss 20765.93, Train Accu 0.9006, Test Loss 3349.58, Test Accu 0.9077
-Epoch 13, Train Loss 20777.77, Train Accu 0.9004, Test Loss 3351.89, Test Accu 0.9075
-Epoch 14, Train Loss 20567.41, Train Accu 0.9014, Test Loss 3325.67, Test Accu 0.9078
-Epoch 15, Train Loss 20455.70, Train Accu 0.9021, Test Loss 3313.36, Test Accu 0.9081
+Epoch 1, Train Loss 26910.25, Train Accu 0.8839, Test Loss 4270.45, Test Accu 0.8911
+Epoch 2, Train Loss 23418.53, Train Accu 0.8951, Test Loss 3722.81, Test Accu 0.9001
+Epoch 3, Train Loss 22151.00, Train Accu 0.8981, Test Loss 3534.35, Test Accu 0.9036
+Epoch 4, Train Loss 21490.18, Train Accu 0.8995, Test Loss 3435.39, Test Accu 0.9054
+Epoch 5, Train Loss 20823.81, Train Accu 0.9022, Test Loss 3346.04, Test Accu 0.9075
+Epoch 6, Train Loss 20526.92, Train Accu 0.9030, Test Loss 3310.17, Test Accu 0.9093
+Epoch 7, Train Loss 20719.23, Train Accu 0.9002, Test Loss 3356.34, Test Accu 0.9061
+Epoch 8, Train Loss 20632.19, Train Accu 0.9002, Test Loss 3335.91, Test Accu 0.9075
+Epoch 9, Train Loss 20553.59, Train Accu 0.8999, Test Loss 3340.11, Test Accu 0.9068
+Epoch 10, Train Loss 20438.05, Train Accu 0.9008, Test Loss 3332.79, Test Accu 0.9068
+Epoch 11, Train Loss 20430.31, Train Accu 0.9003, Test Loss 3338.48, Test Accu 0.9056
+Epoch 12, Train Loss 20747.49, Train Accu 0.8968, Test Loss 3398.98, Test Accu 0.9029
+Epoch 13, Train Loss 21043.95, Train Accu 0.8947, Test Loss 3447.08, Test Accu 0.9006
+Epoch 14, Train Loss 20788.64, Train Accu 0.8961, Test Loss 3418.35, Test Accu 0.9013
+Epoch 15, Train Loss 20898.67, Train Accu 0.8955, Test Loss 3442.16, Test Accu 0.9004
 findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans (u'/usr/local/lib/python2.7/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
 findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0 to DejaVu Sans (u'/usr/local/lib/python2.7/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000

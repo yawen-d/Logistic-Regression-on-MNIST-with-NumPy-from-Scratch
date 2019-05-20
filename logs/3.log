@@ -1,32 +1,32 @@
+learning rate: 0.00500000
+Epoch 1, Train Loss 26910.25, Train Accu 0.8839, Test Loss 4270.45, Test Accu 0.8911
+learning rate: 0.00500000
+Epoch 2, Train Loss 23418.53, Train Accu 0.8951, Test Loss 3722.81, Test Accu 0.9001
+learning rate: 0.00500000
+Epoch 3, Train Loss 22151.00, Train Accu 0.8981, Test Loss 3534.35, Test Accu 0.9036
+learning rate: 0.00500000
+Epoch 4, Train Loss 21490.18, Train Accu 0.8995, Test Loss 3435.39, Test Accu 0.9054
+learning rate: 0.00500000
+Epoch 5, Train Loss 20823.81, Train Accu 0.9022, Test Loss 3346.04, Test Accu 0.9075
+learning rate: 0.00500000
+Epoch 6, Train Loss 20526.92, Train Accu 0.9030, Test Loss 3310.17, Test Accu 0.9093
+learning rate: 0.00500000
+Epoch 7, Train Loss 20719.23, Train Accu 0.9002, Test Loss 3356.34, Test Accu 0.9061
 learning rate: 0.00250000
-Epoch 1, Train Loss 32507.77, Train Accu 0.8701, Test Loss 5187.57, Test Accu 0.8773
+Epoch 8, Train Loss 20571.28, Train Accu 0.9008, Test Loss 3326.39, Test Accu 0.9077
 learning rate: 0.00250000
-Epoch 2, Train Loss 27019.41, Train Accu 0.8835, Test Loss 4294.72, Test Accu 0.8906
-learning rate: 0.00250000
-Epoch 3, Train Loss 24742.65, Train Accu 0.8907, Test Loss 3930.15, Test Accu 0.8958
-learning rate: 0.00250000
-Epoch 4, Train Loss 23495.10, Train Accu 0.8940, Test Loss 3731.25, Test Accu 0.8994
-learning rate: 0.00250000
-Epoch 5, Train Loss 22567.46, Train Accu 0.8974, Test Loss 3593.55, Test Accu 0.9028
-learning rate: 0.00250000
-Epoch 6, Train Loss 21937.69, Train Accu 0.8989, Test Loss 3498.67, Test Accu 0.9053
-learning rate: 0.00250000
-Epoch 7, Train Loss 21698.83, Train Accu 0.8992, Test Loss 3470.15, Test Accu 0.9052
-learning rate: 0.00187500
-Epoch 8, Train Loss 21447.61, Train Accu 0.9000, Test Loss 3427.99, Test Accu 0.9060
-learning rate: 0.00140625
-Epoch 9, Train Loss 21264.93, Train Accu 0.9007, Test Loss 3408.53, Test Accu 0.9066
-learning rate: 0.00105469
-Epoch 10, Train Loss 21169.62, Train Accu 0.9008, Test Loss 3396.20, Test Accu 0.9070
-learning rate: 0.00079102
-Epoch 11, Train Loss 21032.21, Train Accu 0.9017, Test Loss 3373.63, Test Accu 0.9075
-learning rate: 0.00059326
-Epoch 12, Train Loss 21017.50, Train Accu 0.9015, Test Loss 3374.15, Test Accu 0.9072
-learning rate: 0.00044495
-Epoch 13, Train Loss 21039.54, Train Accu 0.9012, Test Loss 3376.93, Test Accu 0.9069
-learning rate: 0.00033371
-Epoch 14, Train Loss 20983.06, Train Accu 0.9016, Test Loss 3369.31, Test Accu 0.9068
-learning rate: 0.00025028
-Epoch 15, Train Loss 20943.25, Train Accu 0.9019, Test Loss 3363.66, Test Accu 0.9071
+Epoch 9, Train Loss 20551.13, Train Accu 0.9007, Test Loss 3334.27, Test Accu 0.9075
+learning rate: 0.00125000
+Epoch 10, Train Loss 20522.96, Train Accu 0.9011, Test Loss 3333.50, Test Accu 0.9074
+learning rate: 0.00062500
+Epoch 11, Train Loss 20418.33, Train Accu 0.9016, Test Loss 3314.55, Test Accu 0.9075
+learning rate: 0.00031250
+Epoch 12, Train Loss 20428.32, Train Accu 0.9015, Test Loss 3317.73, Test Accu 0.9074
+learning rate: 0.00015625
+Epoch 13, Train Loss 20466.80, Train Accu 0.9010, Test Loss 3323.77, Test Accu 0.9071
+learning rate: 0.00007813
+Epoch 14, Train Loss 20460.61, Train Accu 0.9010, Test Loss 3322.87, Test Accu 0.9071
+learning rate: 0.00003906
+Epoch 15, Train Loss 20457.63, Train Accu 0.9010, Test Loss 3322.45, Test Accu 0.9071
 findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans (u'/usr/local/lib/python2.7/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
 findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0 to DejaVu Sans (u'/usr/local/lib/python2.7/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000
