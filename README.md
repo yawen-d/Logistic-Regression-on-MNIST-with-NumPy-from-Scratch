@@ -162,7 +162,8 @@ For each epoch, we evaluate the loss and accuracy.
 ## Training Results
 
 The training results of 4 configurations are shown as follows. 
-|                       |             config_sample              |             config_1              | config_2                          | config_3                          |
+
+|            hi           |             config_sample              |             config_1              | config_2                          | config_3                          |
 | :-------------------: | :------------------------------------: | :-------------------------------: | --------------------------------- | --------------------------------- |
 |       Optimizer       |                  SGD                   |                SGD                | SGD                               
 
