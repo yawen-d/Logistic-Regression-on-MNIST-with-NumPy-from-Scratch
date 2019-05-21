@@ -90,8 +90,4 @@ Comments:
 - **Config_sample:** The accuracy drops after epoch 6 . 
 - **Config_1:** By increasing the batch size and decreasing the learning rate, the convergence rate decreases because of fewer descent iterations.
 - **Config_2:** Adding momentum allows the model to converge faster.
-<<<<<<< HEAD
 - **Config_3:** Allowing learning decay prevents the accuracy from dropping dramatically.
-=======
-- **Config_3:** Allowing learning decay prevents the accuracy from dropping dramatically.
->>>>>>> cfa556453f8da4ef5bd538db12989d41d5f7f51a
