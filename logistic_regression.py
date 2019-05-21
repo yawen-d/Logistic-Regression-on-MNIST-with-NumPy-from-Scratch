@@ -1,6 +1,6 @@
 import numpy as np
 import h5py
-#data file type h5py
+# data file type h5py
 import time
 import copy
 import matplotlib.pyplot as plt
