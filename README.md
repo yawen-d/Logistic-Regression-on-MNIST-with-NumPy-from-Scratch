@@ -15,7 +15,7 @@ Implement and train a logistic regression model from scratch in Python on the MN
 
 We put the screenshots of the mathematical derivation of the algorithm here due to GitHub's incompatibility with math expressions. The raw LaTeX expression is included in `./math_raw.md`.
 
-![1](assets/1-8422333.png)
+![1](assets/1.png)
 
 ![2](assets/2.png)
 
@@ -90,4 +90,8 @@ Comments:
 - **Config_sample:** The accuracy drops after epoch 6 . 
 - **Config_1:** By increasing the batch size and decreasing the learning rate, the convergence rate decreases because of fewer descent iterations.
 - **Config_2:** Adding momentum allows the model to converge faster.
+<<<<<<< HEAD
 - **Config_3:** Allowing learning decay prevents the accuracy from dropping dramatically.
+=======
+- **Config_3:** Allowing learning decay prevents the accuracy from dropping dramatically.
+>>>>>>> cfa556453f8da4ef5bd538db12989d41d5f7f51a
