@@ -3,12 +3,12 @@
 
 ### Model
 
-Consider a logistic regression model for classification where $\mathcal{Y} = \{0,1,...,K-1\}$, weights $\theta\in\mathbb{R}^{K\times d}$ and biases $b\in \mathbb{R}^K$. Given an input $x \in \mathbb{R}^d$, the model $f(x;θ)$ produces a probability of each possible outcome in $\mathcal{Y} $ :
+Consider a logistic regression model for classification where $\mathcal{Y} = \{0,1,...,K-1\}$, weights $\theta\in\mathbb{R}^{K\times d}$ and biases $b\in \mathbb{R}^K$. Given an input $x \in \mathbb{R}^d$, the model $f(x;\theta)$ produces a probability of each possible outcome in $\mathcal{Y} $ :
 $$
-f(x;θ,b)=F_{\text{softmax}}(\theta x+b),
+f(x;\theta,b)=F_{\text{softmax}}(\theta x+b),
 \\F_{\text{softmax}}(z)=\frac{1}{\sum_{k=0}^{K-1}e^{z_k}}(e^{z_0},e^{z_1},...e^{z_{K-1}})
 $$
-where $z_k$ is the $k$-th element of the vector $z$. The set of probabilities on $\mathcal{Y}$ is $P(\mathcal{Y}) := \{p ∈ \mathbb{R}^K :􏰋\sum^{K−1}_{k=0} p_k =1,p_k \ge 0\ \forall\ k=0,...,K−1\}$ The function $F_{\text{softmax}}(z):\mathbb{R}^K\rightarrow \mathcal{P(Y)}$ is called the “softmax function” and is frequently used in deep learning. $F_{\text{softmax}}(z)$ takes a K-dimensional input and produces a probability distribution on $\mathcal{Y}$. That is, the output of $F_{\text{softmax}}(z)$ is a vector of probabilities for the events $0, 1, . . . , K − 1$. The softmax function can be thought of as a smooth approximation to the argmax function since it pushes its smallest inputs towards 0 and its largest input towards 1. 
+where $z_k$ is the $k$-th element of the vector $z$. The set of probabilities on $\mathcal{Y}$ is $P(\mathcal{Y}) := \{p ∈ \mathbb{R}^K :􏰋\sum^{K−1}_{k=0} p_k =1,p_k \ge 0\ \forall\ k=0,…,K-1\}$ The function $F_{\text{softmax}}(z):\mathbb{R}^K\rightarrow \mathcal{P(Y)}$ is called the “softmax function” and is frequently used in deep learning. $F_{\text{softmax}}(z)$ takes a K-dimensional input and produces a probability distribution on $\mathcal{Y}$. That is, the output of $F_{\text{softmax}}(z)$ is a vector of probabilities for the events $0, 1, . . . , K-1$. The softmax function can be thought of as a smooth approximation to the argmax function since it pushes its smallest inputs towards 0 and its largest input towards 1. 
 
 ### Objective Function
 
@@ -25,31 +25,31 @@ $$
 \end{array} \right.
 $$
 
-### Mini-batch Gredian descent
+### Mini-batch Gradient descent
 
 $$
-θ^{(l+1)} = θ^{(l)} −α^{(l)}\frac{1}{􏰌M}\sum_{m=1}^M 
-∇_θ\rho(f(x^{(l,m)};θ^{(l)},b^{(l)}),y^{l,m}),
-\\b^{(l+1)} = b^{(l)} −α^{(l)}\frac{1}{􏰌M}\sum_{m=1}^M 
-∇_b\rho(f(x^{(l,m)};θ^{(l)},b^{(l)}),y^{l,m})
+\theta^{(l+1)} = \theta^{(l)} -\alpha^{(l)}\frac{1}{M}\sum_{m=1}^M \nabla_\theta\rho(f(x^{(l,m)};\theta^{(l)},b^{(l)}),y^{l,m}),
+\\b^{(l+1)} = b^{(l)} -\alpha^{(l)}\frac{1}{M}\sum_{m=1}^M \nabla_b\rho(f(x^{(l,m)};\theta^{(l)},b^{(l)}),y^{l,m})
 $$
 
 ### Derivation of SGD
 
-We will derive the stochastic gradient descent algorithm for the logistic regression model. The logistic regression model $f(x;θ)$ is estimated from the dataset $(x_n, y_n)^N_{n=1}$ where $(x_n, y_n) ∼ \mathbb{P}_{X,Y}$ .
+We will derive the stochastic gradient descent algorithm for the logistic regression model. The logistic regression model $f(x;\theta )$ is estimated from the dataset $(x_n, y_n)^N_{n=1}$ where $(x_n, y_n) ∼ \mathbb{P}_{X,Y}$ .
 
 The gradient of the loss function for a generic data sample $(x, y)$ is
 $$
-∇_θρ(f (x;θ,b), y) = −∇_θ \text{log}F_{\text{softmax},y} (θx+b)
+\nabla_\theta \rho(f (x;\theta,b), y) = -\nabla_\theta \text{log}F_{\text{softmax},y} (\theta x+b)
 $$
-where $F_{softmax,k}(z)$ is the k-th element of the vector output of the function $F_{softmax,k}(z)$. Let $θ_{k,:}$ be the k-th row of the matrix $θ$. 
+where $F_{softmax,k}(z)$ is the k-th element of the vector output of the function $F_{softmax,k}(z)$. Let $\theta_{k,:}$ be the k-th row of the matrix $θ$. 
 
 If $k\ne y$, 
 $$
 \begin{eqnarray}
-∇_{\theta_{k,:}}ρ(f (x;θ,b), y) & = & −∇_{\theta_{k,:}}\text{log}F_{\text{softmax},y} (θx+b)
+\nabla_{\theta_{k,:}}\rho(f (x;\theta ,b), y) & = & -\nabla_{\theta_{k,:}}\text{log}F_{\text{softmax},y} (\theta x+b)
 
-\\ & = & -\frac{∇_{θ_{k,:}}F_{\text{softmax},y}(\theta x+b)}{F_{\text{softmax},y}(\theta x+b)}\\ & = & -\frac{1}{F_{\text{softmax},y}(\theta x+b)}\frac{0-e^{\theta_{y,:}x+b}\ e^{\theta_{k,:}x+b}}{(\sum_{m=0}^{K-1}e^{\theta_{m,:}x+b})^2}x
+\\ & = & -\frac{\nabla_{\theta_{k,:}}F_{\text{softmax},y}(\theta x+b)}{F_{\text{softmax},y}(\theta x+b)}
+
+\\ & = & -\frac{1}{F_{\text{softmax},y}(\theta x+b)}\frac{0-e^{\theta_{y,:}x+b}\ e^{\theta_{k,:}x+b}}{(\sum_{m=0}^{K-1}e^{\theta_{m,:}x+b})^2}x
 
 \\ & = & \frac{1}{F_{\text{softmax},y}(\theta x+b)}F_{\text{softmax},y}(\theta x+b)F_{\text{softmax},k}(\theta x+b)x\\ & = & F_{\text{softmax},k}(\theta x+b)x
 \end{eqnarray}
@@ -57,8 +57,8 @@ $$
 If $k=y$,
 $$
 \begin{eqnarray}
-∇_{\theta_{k,:}}ρ(f (x;θ,b), y) & = & −∇_{\theta_{k,:}}\text{log}F_{\text{softmax},y} (θx+b)
-\\ & = & -\frac{∇_{θ_{k,:}}F_{\text{softmax},y}(\theta x+b)}{F_{\text{softmax},y}(\theta x+b)}
+\nabla_{\theta_{k,:}}\rho(f (x;\theta,b), y) & = & -\nabla_{\theta_{k,:}}\text{log}F_{\text{softmax},y} (\theta x+b)
+\\ & = & -\frac{\nabla_{\theta_{k,:}}F_{\text{softmax},y}(\theta x+b)}{F_{\text{softmax},y}(\theta x+b)}
 \\ & = & -\frac{1}{F_{\text{softmax},y}(\theta x+b)}\frac{(\sum_{m=0}^{K-1}e^{\theta_{m,:}x+b})e^{\theta_{k,:}x+b}-e^{\theta_{y,:}x+b}\ e^{\theta_{k,:}x+b}}{(\sum_{m=0}^{K-1}e^{\theta_{m,:}x+b})^2}x
 \\ & = & \frac{1}{F_{\text{softmax},y}(\theta x+b)}(1-F_{\text{softmax},k}(\theta x+b))F_{\text{softmax},y}(\theta x+b)x
 \\ & = & F_{\text{softmax},k}(\theta x+b)x-x
@@ -68,11 +68,11 @@ $$
 
 Hence, for any k,		
 $$
-∇_{\theta_{k,:}}ρ(f (x;θ,b), y) = -(\mathbf{1}_{y=k}-F_{\text{softmax},y}(\theta x+b))x
+\nabla_{\theta_{k,:}}\rho(f (x;\theta,b), y) = -(\mathbf{1}_{y=k}-F_{\text{softmax},y}(\theta x+b))x
 $$
 Therefore,
 $$
-∇_{\theta}ρ(f (x;θ,b), y) = -(e(y)-F_{\text{softmax}}(\theta x+b))x^\top
+\nabla_{\theta}\rho(f (x;\theta,b), y) = -(e(y)-F_{\text{softmax}}(\theta x+b))x^\top
 $$
 where,
 $$
@@ -80,7 +80,7 @@ e(y)=(\mathbf{1}_{y=0},...,\mathbf{1}_{y=K-1})^\top.
 $$
 Similarly, we could get the gradient of the loss function with respect to $b$:
 $$
-∇_{b}ρ(f (x;θ,b), y) = -(e(y)-F_{\text{softmax}}(\theta x+b))
+\nabla_{b}\rho(f(x;\theta,b), y) = -(e(y)-F_{\text{softmax}}(\theta x+b))
 $$
 The stochastic gradient descent algorithm is:
 
@@ -88,7 +88,7 @@ The stochastic gradient descent algorithm is:
 
 - For $\mathcal{l}=0,1,...,L$ :
 
-  - Select $M$ data samples $(x^{(l,m)}, y^{(l,m)})^M_{m=1}$ at random from the dataset $(x_n, y_n)^N_{n=1}$, where $M ≪ N$.
+  - Select $M$ data samples $(x^{(l,m)}, y^{(l,m)})^M_{m=1}$ at random from the dataset $(x_n, y_n)^N_{n=1}$, where $M \ll N$.
   - Calculate the gradient for the loss from the data sample:
 
   $$
