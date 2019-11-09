@@ -25,7 +25,7 @@ $$
 \end{array} \right.
 $$
 
-### Mini-batch Gradient descent
+### Mini-batch Gradient Descent
 
 $$
 \theta^{(l+1)} = \theta^{(l)} -\alpha^{(l)}\frac{1}{M}\sum_{m=1}^M \nabla_\theta\rho(f(x^{(l,m)};\theta^{(l)},b^{(l)}),y^{l,m}),
